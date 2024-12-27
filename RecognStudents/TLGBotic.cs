@@ -67,29 +67,18 @@ namespace NeuralNetwork1
             if (message.Text == "/start")
             {
                 var result = talk("СТАРТ", message.From);
-                Console.WriteLine(result.ToString());
                 botClient.SendTextMessageAsync(message.Chat.Id, result, cancellationToken: cancellationToken);
             }
             else if (message.Type == MessageType.Photo)
             {
-                var fileId = message.Photo[message.Photo.Length - 1].FileId; // Get the last (highest resolution) photo
+                var fileId = message.Photo[message.Photo.Length - 1].FileId;
                 Telegram.Bot.Types.File fileInfo = botik.GetFileAsync(fileId).Result;
-                //var fileInfo = botClient.GetFileAsync(fileId, cancellationToken);
                 var stream = new MemoryStream();
 
                 await botClient.DownloadFileAsync(fileInfo.FilePath, stream, cancellationToken);
                 var img = System.Drawing.Image.FromStream(stream);
 
-
-                var filePath = "BotSave\\" + message.From;
-                System.IO.Directory.CreateDirectory(filePath);
-                var fileName = message.Date.Day + "_" + message.Date.Month + "_" + message.Date.Year + "__"
-                    + message.Date.Hour + "_" + message.Date.Minute + "_" + message.Date.Second + ".png";
-                var path = Path.Combine(filePath, fileName);
-                Console.WriteLine(path);
-                img.Save(path, System.Drawing.Imaging.ImageFormat.Png);
                 var bitmap_img = new System.Drawing.Bitmap(img);
-                bitmap_img.Save(path);
 
                 string autoName = magicEye.Predict(bitmap_img, false);
 
@@ -103,7 +92,6 @@ namespace NeuralNetwork1
                 System.IO.Directory.CreateDirectory(filePath);
                 var fileName = message.From + ".txt";
                 var time = message.Date.ToString();
-                //var time = message.Date.TimeOfDay.Hours.ToString() + ":" + message.Date.TimeOfDay.Minutes.ToString() + ":" + message.Date.TimeOfDay.Seconds.ToString();
                 var path = Path.Combine(filePath, fileName);
 
                 using (StreamWriter sw = System.IO.File.AppendText(path))

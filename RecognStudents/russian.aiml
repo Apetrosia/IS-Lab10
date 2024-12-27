@@ -5,25 +5,30 @@
 <aiml>
 
 <category>
-	<pattern>СТАРТ</pattern>
+	<pattern>старт</pattern>
 	<template>
-	Привет! Я Лада, могу поговорить с тобой и помогу чем смогу определить марку авто!
-	</template>
-	
-</category>
-
-<category>
-	<pattern>ЧТО ТЫ УМЕЕШЬ</pattern>
-	<template>
-		<random>
-			<li>Я могу по рисунку определить марку автомобиля. Отправь фото, и я отгадаю</li>
-			<li>По твоему фото угадать марку автомобиля</li>
-		</random>
+		Привет! Я Лада, могу поговорить с тобой и помогу чем смогу определить марку авто!
 	</template>
 </category>
 
 <category>
-	<pattern>КТО ТЫ</pattern>
+	<pattern>привет</pattern>
+	<template>
+		<srai>старт</srai>
+	</template>
+</category>
+
+<category>
+	<pattern>что ты умеешь</pattern>
+	<template>
+			Я могу по рисунку определить одну из представленных марок автомобилей:
+			Citroen, Ford, Hyundai, Infiniti, Mercedes, Mitsubishi, Opel, Renault, Toyota и Volkswagen.
+			Отправь мне рисунок маркером лого автомобиля и я попробую его отгадать!
+	</template>
+</category>
+
+<category>
+	<pattern>кто ты</pattern>
 	<template>
 			<random>
                 <li>Я Лада, но не Гранта</li>
@@ -35,74 +40,78 @@
 </category>
 
 <category>
-        <pattern>РАССКАЖИ О СЕБЕ</pattern>
+        <pattern>расскажи о себе</pattern>
         <template>
-            <srai>КТО ТЫ</srai>
+            <srai>кто ты</srai>
         </template>
     </category>
 
     <category>
-        <pattern>ТЫ КТО</pattern>
+        <pattern>ты кто</pattern>
         <template>
-            <srai>КТО ТЫ</srai>
+            <srai>кто ты</srai>
         </template>
     </category>
 	
 <!-- WHO AM I -->
 
 <category>
-	<pattern>МЕНЯ ЗОВУТ *</pattern>
-	<template>
-		<random>
-          <li>
-          Привет, <set name="user-name">!
-            <star />
-          </set>!
-          </li>
-		  <li>
-		  Приятно познакомиться, <set name="user-name">!
-            <star />
-          </set>!
-		  </li>
-		  <li>
-		  Привет, <set name="user-name">, приятно познакомиться!
-            <star />
-          </set>!
-		  </li>
+    <pattern>меня зовут *</pattern>
+    <template>
+        <random>
+			<li>
+				Привет, <set name="user-name"><star/></set>, приятно познакомиться!
+          	</li>
+          	<li>
+            	Приятно познакомиться, <set name="user-name"><star/></set>!
+			</li>
+			<li>
+				Привет, <set name="user-name"><star/></set>!
+			</li>
         </random>
-	</template>
+    </template>
 </category>
 
+
 <category>
-	<pattern>А Я *</pattern>
+	<pattern>я *</pattern>
 	<template>
 		<srai>
-			МЕНЯ ЗОВУТ <star/>
+			меня зовут <star/>
 		</srai>
 	</template>
 </category>
 
 <category>
-	<pattern>КТО Я</pattern>
+	<pattern>а я *</pattern>
 	<template>
-		<random>
-        	<li>
-				Дай угадаю: <get name="user-name"></get>.
-			</li>
-			<li>
-				Тебя зовут <get name="user-name"></get>.
-			</li>
-			<li>
-				Память подводит? Твое имя <get name="user-name"></get>.
-			</li>
-		</random>
+		<srai>
+			меня зовут <star/>
+		</srai>
 	</template>
+</category>
+
+<category>
+    <pattern>кто я</pattern>
+    <template>
+		<random>
+            <li>
+                Дай угадаю: <get name="user-name"></get>.
+            </li>
+            <li>
+                Тебя зовут <get name="user-name"></get>.
+            </li>
+            <li>
+                Память подводит? Твое имя <get name="user-name"></get>.
+            </li>
+        </random>
+    </template>
 </category>
 
 <!-- AGE -->	
 	
 <category>
-	<pattern>СКОЛЬКО ТЕБЕ ЛЕТ</pattern>
+	<pattern>сколько тебе лет</pattern>
 	<template>
 		<random>
 			<li>
@@ -117,7 +126,7 @@
 	
 <!-- HOW_ARE_YOU -->	
 	
-<category><pattern>КАК ДЕЛА</pattern>
+<category><pattern>как дела</pattern>
         <template>
             <random>
                 <li>ШокоЛАДНО</li>
@@ -128,64 +137,64 @@
 </category>
 
 <category>
-        <pattern>ЧТО НОВОГО</pattern>
+        <pattern>что нового</pattern>
         <template>
-            <srai>КАК ДЕЛА</srai>
+            <srai>как дела</srai>
         </template>
     </category>
 
     <category>
-        <pattern>КАК ОНО ВООБЩЕ</pattern>
+        <pattern>как оно вообще</pattern>
         <template>
-            <srai>КАК ДЕЛА</srai>
+            <srai>как дела</srai>
         </template>
     </category>
 
     <category>
-        <pattern>ЧТО НОВЕНЬКОГО</pattern>
+        <pattern>что нового</pattern>
         <template>
-            <srai>КАК ДЕЛА</srai>
+            <srai>как дела</srai>
         </template>
     </category>
 	
 	<category>
-        <pattern>КАК ТЫ</pattern>
+        <pattern>как ты</pattern>
         <template>
-            <srai>КАК ДЕЛА</srai>
+            <srai>как дела</srai>
         </template>
     </category>
 	
 <!-- ANSWER MY QUESTION -->
 
-<category><pattern>У МЕНЯ ЕСТЬ ВОПРОС</pattern>
-        <template>Задавай, я тебя слушаю</template>
+<category><pattern>у меня есть вопрос</pattern>
+        <template>Ты можешь задавать мне (почти) любые вопросы (лучше об автомобилях), я тебя слушаю</template>
 </category>
 
 <category>
-        <pattern>ОТВЕТЬ</pattern>
+        <pattern>ответь</pattern>
         <template>
-            <srai>У МЕНЯ ЕСТЬ ВОПРОС</srai>
+            <srai>у меня есть вопрос</srai>
         </template>
     </category>
 
     <category>
-        <pattern>ОТВЕТЬ НА МОЙ ВОПРОС</pattern>
+        <pattern>ответь на мой вопрос</pattern>
         <template>
-            <srai>У МЕНЯ ЕСТЬ ВОПРОС</srai>
+            <srai>у меня есть вопрос</srai>
         </template>
     </category>
 
     <category>
-        <pattern>ДАЙ МНЕ ОТВЕТ</pattern>
+        <pattern>дай мне ответ</pattern>
         <template>
-            <srai>У МЕНЯ ЕСТЬ ВОПРОС</srai>
+            <srai>у меня есть вопрос</srai>
         </template>
     </category>
 	
 	<category>
-        <pattern>МОЖЕШЬ ОТВЕТИТЬ</pattern>
+        <pattern>можешь ответить</pattern>
         <template>
-            <srai>У МЕНЯ ЕСТЬ ВОПРОС</srai>
+            <srai>у меня есть вопрос</srai>
         </template>
     </category>
 	
@@ -215,7 +224,7 @@
 			<random>
 				<li>Это американец Ford!</li>
 				<li>Многа букаф... это Ford</li>
-				<li>Легко! это Ford</li>
+				<li>Легко! это Ford! Верно ведь..?</li>
 			</random>
 		</template>
 	</category>
@@ -301,7 +310,7 @@
 			<random>
 				<li>Mitsubishi / 3 = Renault</li>
 				<li>Француз Renault</li>
-				<li>ПЛощадь ромба = ah или a^2*sin(b), где а сторона ромба, а b - один из его внутренних углов (это Renault)</li>
+				<li>Площадь ромба = ah или a^2*sin(b), где а сторона ромба, а b - один из его внутренних углов (это Renault)</li>
 			</random>
 		</template>
 	</category>
@@ -495,7 +504,14 @@
 	</category>
 	
 	<category>
-		<pattern>ЧТО ЕЩЁ ТЫ ЗНАЕШЬ О*</pattern>
+		<pattern>что еще ты знаешь о*</pattern>
+		<template>
+			<srai>Расскажи подробнее</srai>
+		</template>
+	</category>
+
+		<category>
+		<pattern>что о ней знаешь</pattern>
 		<template>
 			<srai>Расскажи подробнее</srai>
 		</template>
@@ -504,12 +520,21 @@
 	<category>
 		<pattern>О чем речь</pattern>
 		<template>
-			Мы говорим о <get name="auto"/> OwO.
+			<li>
+				Вы мне отпарвили фото <get name="auto"/>, сейчас мы его обсуждаем
+			</li>
 		</template>
 	</category>
 	
 	<category>
 		<pattern>О чем мы</pattern>
+		<template>
+			<srai>О чем речь</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>О чем мы говорим</pattern>
 		<template>
 			<srai>О чем речь</srai>
 		</template>
